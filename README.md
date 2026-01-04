@@ -1,4 +1,4 @@
-# Robust Decision Curve Analysis for Survival Models in the presence Censoring
+# Robust Decision Curve Analysis for Survival Prediction Models in the presence of Informative Censoring
 
 This GitHub repository contains reproducibility materials for the Robust Decision Curve Analysis project submitted to SMDM (Quantitative Methods and Theoretical Developments 
 ). It includes modular R scripts for data simulation, modeling, net benefit calculations, bootstrapping, replications, summarization, and visualization.
