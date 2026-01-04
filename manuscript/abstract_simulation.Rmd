@@ -23,6 +23,9 @@ source(here("code/visualize.R"))
 
 ```{r}
 all_results <- load_results_csv()
+
+#all_results <- run_simulation() 
+#save_results_csv(all_results)
 ```
 
 ```{r}
