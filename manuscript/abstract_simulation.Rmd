@@ -1,0 +1,35 @@
+---
+title: "abstract_simulation"
+author: "Amirhosein"
+date: "2026-01-04"
+output: html_document
+---
+
+```{r}
+library(here)
+knitr::opts_chunk$set(echo = TRUE)
+source(here("code/setup.R"))
+source(here("code/data_generation.R"))
+source(here("code/modeling.R"))
+source(here("code/components.R"))
+source(here("code/net_benefit.R"))
+source(here("code/bootstrap.R"))
+source(here("code/replication.R"))
+source(here("code/simulate.R"))
+source(here("code/summarize.R"))
+source(here("code/visualize.R"))
+
+```
+
+```{r}
+all_results <- load_results_csv()
+```
+
+```{r}
+combined_summary <- summarize_results(all_results)
+print(combined_summary)
+```
+
+```{r}
+plot_bias(all_results)
+```
