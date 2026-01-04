@@ -27,5 +27,6 @@ This project evaluates robust decision curve analysis methods (Kaplan-Meier vs. 
 ## Notes
 - Parallelization uses `future` (multisession by default).
 
-
+## Reproducibility Statement 
+This repository contains all code and workflows required to reproduce the simulation results and figures reported in the abstract. Due to computational cost, pre-generated results are provided, but full simulations can be rerun from source.
 
