@@ -1,10 +1,9 @@
-# Robust Decision Curve Analysis for Survival Risk Prediction Models in the presence of Informative Censoring
+# Robust Decision Curve Analysis for Survival Risk Prediction Models in the Presence of Informative Censoring
 
-This GitHub repository contains reproducibility materials for the Robust Decision Curve Analysis project submitted to SMDM (Quantitative Methods and Theoretical Developments 
-). It includes modular R scripts for data simulation, modeling, net benefit calculations, bootstrapping, replications, summarization, and visualization.
+This GitHub repository contains reproducibility materials for the abstract submitted to the 2026 SMDM Annual Meeting: Robust Decision Curve Analysis for Survival Risk Prediction Models in the Presence of Informative Censoring. It includes modular R scripts for our proposed algorithm as well as the simulation study.
 
 ## Overview
-This project evaluates robust decision curve analysis methods (Kaplan-Meier vs. Conditional IPCW) under informative and non-informative censoring scenarios. Simulations generate survival data, fit Cox models, compute net benefits, and assess bias/coverage via bootstrapping.
+This project evaluates robust decision curve analysis against the conventional decision curve analysis for survival risk prediction models under informative and non-informative censoring scenarios. Simulations generate survival data, fit Cox models, compute net benefits, and assess bias.
 
 ## Requirements
 - R >= 4.0
