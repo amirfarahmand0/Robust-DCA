@@ -1,9 +1,9 @@
-Please replace the contents of this file with relevant instructions for your repository or remove this file entirely.
+# Data Directory
 
-This directory would generally contain the real data files (or facsimile versions of them in place of confidential data) and simulated data files.
+This directory contains simulated datasets generated via code/data_generation.R.
 
-Cleaned data that are produced by processing raw input data might also be placed here.
+- train_data.csv: Training data (n=1000) for the Cox model.
+- informative_large_data.csv: Large simulated data (n=1,000,000) for informative censoring scenario.
+- non_informative_large_data.csv: Large simulated data for non-informative scenario.
 
-Code to generate the simulated data and (if relevant) and facsimile data provided in place of confidential real data might also be placed here. 
-
-Code for data cleaning could potentially also be placed here rather than in `code`.
+To regenerate: Run code/generate_data.R.
