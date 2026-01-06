@@ -26,6 +26,7 @@ This project evaluates robust decision curve analysis against the conventional d
 ## Notes
 - Parallelization uses `future` (multisession by default).
 
-## Reproducibility Statement 
-This repository contains all code and workflows required to reproduce the simulation results and figures reported in the abstract. Due to computational cost, pre-generated results are provided, but full simulations can be rerun from source.
+## Reproducibility Statement
+These analyses were conducted using both fully reproducible simulation runs and pre-generated outputs. Because generating the simulation results is computationally intensive (e.g., 1,000 replications with bootstrapping), pre-generated simulation outputs (CSVs in `/output`) and datasets (CSVs in `/data`) are also provided. The complete simulations can be regenerated from source by setting `reproduce <- TRUE` in the Rmd (with an optional `seed_number` for reproducibility), which triggers `run_simulation()`. Timing information and computational specifications are reported in the knitted report. Package dependencies can be restored using `renv::restore()`.
+
 
