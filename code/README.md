@@ -6,8 +6,8 @@ Brief descriptions of the .R files:
 - `setup.R`: Loads libraries and configures parallel processing.
 - `data_generation.R`: Function to generate tuned survival data.
 - `modeling.R`: Functions for fitting Cox models and predicting risks.
-- `components.R`: Functions to compute prevalence, sensitivity, and specificity (true, KM, IPCW).
-- `net_benefit.R`: Functions to calculate net benefits (true, KM, IPCW).
+- `components.R`: Functions to compute prevalence, sensitivity, and specificity (true, KM, CIPCW).
+- `net_benefit.R`: Functions to calculate net benefits (true, KM, CIPCW).
 - `bootstrap.R`: Function for bootstrap confidence intervals.
 - `replication.R`: Function for single replication runs.
 - `simulate.R`: Parameters, scenarios, and main simulation loop.
