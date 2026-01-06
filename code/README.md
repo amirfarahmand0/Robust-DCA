@@ -1,6 +1,6 @@
 # Code Directory
 
-This directory contains the modular R scripts implementing the Robust Decision Curve Analysis (RDCA) algorithm for survival models with informative censoring. The main implementation is in `abstract_simulation.Rmd`, which is reproducible see the knitted HTML version in `abstract_simulation.html`.
+This directory contains the modular R scripts implementing the Robust Decision Curve Analysis (RDCA) algorithm for survival models with informative censoring. The main implementation is in `abstract_simulation.Rmd`, which is reproducible, see the knitted HTML version in `abstract_simulation.html`.
 
 Brief descriptions of the .R files:
 - `setup.R`: Loads libraries and configures parallel processing.
