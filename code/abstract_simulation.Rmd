@@ -1,0 +1,164 @@
+---
+title: "abstract_simulation"
+author: "Amirhosein"
+date: "2026-01-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(here)
+
+source(here("code/setup.R"))
+source(here("code/data_generation.R"))
+source(here("code/modeling.R"))
+source(here("code/components.R"))
+source(here("code/net_benefit.R"))
+source(here("code/bootstrap.R"))
+source(here("code/replication.R"))
+source(here("code/simulate.R"))
+source(here("code/summarize.R"))
+source(here("code/visualize.R"))
+```
+
+## Simulation controls
+
+```{r simulation-parameters}
+# -------------------------------------------------------------------
+# Reproducibility control explanation
+#
+# reproduce = FALSE :
+#   - Load pre-generated CSV result files
+#   - Fast and suitable for routine knitting and review
+#
+# reproduce = TRUE :
+#   - Run the full simulation from scratch
+#   - Save newly generated results to CSV files
+#   - Computationally expensive
+# -------------------------------------------------------------------
+
+seed_number <- 123     # Random seed (used only when reproduce = TRUE)
+
+# Number of cores used for parallel computation
+n_cores <- 15
+```
+
+## Helper function
+
+```{r get-results-function}
+# -------------------------------------------------------------------
+# get_results()
+#
+# Central function controlling whether results are:
+#   - Loaded from disk (reproduce = FALSE)
+#   - Generated via simulation (reproduce = TRUE)
+# -------------------------------------------------------------------
+
+get_results <- function(reproduce = FALSE, seed = 123) {
+  if (reproduce) {
+    all_results <- run_simulation(seed = seed)
+    save_results_csv(all_results)
+  } else {
+    all_results <- load_results_csv()
+  }
+  return(all_results)
+}
+```
+
+# Results using pre-generated data (reproduce = FALSE)
+
+```{r results-reproduce-false}
+reproduce_false <- FALSE
+
+start_time_false <- proc.time()
+all_results_false <- get_results(
+  reproduce = reproduce_false,
+  seed = seed_number
+)
+elapsed_time_false <- proc.time() - start_time_false
+
+cat(sprintf(
+  "Time taken (load results): %.2f seconds\n",
+  elapsed_time_false[["elapsed"]]
+))
+```
+
+## Summary (reproduce = FALSE)
+
+```{r summarize-false}
+combined_summary_false <- summarize_results(all_results_false)
+print(combined_summary_false)
+```
+
+## Bias plot (reproduce = FALSE)
+
+```{r plot-bias-false}
+plot_bias(all_results_false)
+```
+
+# Results using full simulation (reproduce = TRUE)
+
+```{r results-reproduce-true}
+reproduce_true <- TRUE
+
+start_time_true <- proc.time()
+all_results_true <- get_results(
+  reproduce = reproduce_true,
+  seed = seed_number
+)
+elapsed_time_true <- proc.time() - start_time_true
+
+elapsed_seconds <- elapsed_time_true[["elapsed"]]
+elapsed_hours <- elapsed_seconds / 3600
+
+cat(sprintf(
+  "Time taken (full simulation): %.2f seconds (%.2f hours)\n",
+  elapsed_seconds,
+  elapsed_hours
+))
+```
+
+## Summary (reproduce = TRUE)
+
+```{r summarize-true}
+combined_summary_true <- summarize_results(all_results_true)
+print(combined_summary_true)
+```
+
+## Bias plot (reproduce = TRUE)
+
+```{r plot-bias-true}
+plot_bias(all_results_true)
+```
+
+# Computational environment
+
+```{r computational-specs}
+if (!require("benchmarkme")) install.packages("benchmarkme")
+
+library(benchmarkme)
+library(parallel)
+library(knitr)
+
+specs <- data.frame(
+  Item = c(
+    "Operating System",
+    "R Version",
+    "CPU Model",
+    "Total Available Cores",
+    "Cores Used for Simulation",
+    "Parallel Computing"
+  ),
+  Value = c(
+    Sys.info()[["sysname"]],
+    R.version.string,
+    get_cpu()$model_name,
+    detectCores(),
+    n_cores,
+    "Yes (parallelized simulation)"
+  )
+)
+
+kable(specs, caption = "Computational Environment and Parallelization Details")
+```

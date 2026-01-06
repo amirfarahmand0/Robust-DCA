@@ -1,5 +1,8 @@
-Please replace the contents of this file with relevant instructions for your repository or remove this file entirely.
+# Output Directory
 
-This directory would generally contain results of simulations or real data analyses. Also, intermediate output files might be placed here, cached to avoid having to rerun computationally-intensive steps of the workflow. 
+This directory contains generated results from the simulations (informative and non-informative censoring scenarios). Files are CSVs with columns: pt (threshold), NB_km, NB_ipcw, NB_true, bias_km, bias_ipcw.
 
+- `informative_results.csv`: Replication results for informative censoring.
+- `non_informative_results.csv`: Replication results for non-informative censoring.
 
+These can be loaded for quick analysis without re-running simulations.

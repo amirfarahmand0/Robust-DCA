@@ -1,5 +1,16 @@
-Please replace the contents of this file with relevant instructions for your repository or remove this file entirely.
+# Code Directory
 
-This directory would generally contain source code files that contain the core code to implement the method and various utility/auxiliary functions.
+This directory contains the modular R scripts implementing the Robust Decision Curve Analysis (RDCA) algorithm for survival models with informative censoring. The main implementation is in `abstract_simulation.Rmd`, which is reproducible—knit it to HTML for detailed execution, results, and visualizations (see the knitted HTML version if available).
 
-Scripts/code files that execute the overall workflow to carry out an analysis and generate results for the manuscript might be placed in the main directory.
+Brief descriptions of the .R files:
+- `setup.R`: Loads libraries and configures parallel processing.
+- `data_generation.R`: Function to generate tuned survival data.
+- `modeling.R`: Functions for fitting Cox models and predicting risks.
+- `components.R`: Functions to compute prevalence, sensitivity, and specificity (true, KM, IPCW).
+- `net_benefit.R`: Functions to calculate net benefits (true, KM, IPCW).
+- `bootstrap.R`: Function for bootstrap confidence intervals.
+- `replication.R`: Function for single replication runs.
+- `simulate.R`: Parameters, scenarios, and main simulation loop.
+- `summarize.R`: Functions to summarize results and handle CSV I/O.
+- `visualize.R`: Functions for plotting (e.g., bias plots).
+- `generate_data.R`: Script to generate and save simulated datasets to /data.

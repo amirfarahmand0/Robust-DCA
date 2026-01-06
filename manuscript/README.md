@@ -1,3 +1,6 @@
-Please replace the contents of this file with relevant instructions for your repository or remove this file entirely. Also remove `JASA-template.zip` (after extracting the contents as needed).
+# Manuscript Directory
 
-This directory would generally contain the manuscript source files, including the LaTeX or Rmd file for the manuscript, and figure files and files containing tabular information.
+This directory contains supporting materials for the abstract, primarily visualizations.
+
+- `/figures`: Subfolder with generated figures.
+  - `bias_plot.png` (or similar): Bias plot comparing Kaplan-Meier and Conditional IPCW methods across thresholds.

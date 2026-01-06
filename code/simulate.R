@@ -14,13 +14,13 @@ scenarios <- list(
   non_informative = list(HRc_Z1 = 1, HRc_Z2 = 1)
 )
 
-run_simulation <- function() {
+run_simulation <- function(seed = 123) {
+  set.seed(seed)
   all_results <- list()
   for (scen_name in names(scenarios)) {
     cat("Running scenario:", scen_name, "\n")
     gen_params_train <- c(common_params, non_informative)
     gen_params_train$n <- 1000
-    set.seed(123)
     train_data <- do.call(generate_survival_tuned, gen_params_train)
     model <- fit_black_box_model(train_data)
     gen_params_large <- c(common_params, scenarios[[scen_name]])
@@ -33,7 +33,7 @@ run_simulation <- function() {
       pt = pts
     )
     results <- future_lapply(1:1000, function(r) {
-      print(r)
+      #print(r)
       valid_idx <- sample(seq_len(nrow(large_data)), 500, replace = FALSE)
       valid_data <- large_data[valid_idx, ]
       run_single_replication(
@@ -44,7 +44,7 @@ run_simulation <- function() {
         pts = pts,
         B = 500
       )
-    }, future.seed = TRUE)  # Explicit for clarity, but global future.seed=TRUE handles it
+    }, future.seed = TRUE) # Explicit for clarity, but global future.seed=TRUE handles it
     results_df <- do.call(rbind, results)
     all_results[[scen_name]] <- results_df
   }
